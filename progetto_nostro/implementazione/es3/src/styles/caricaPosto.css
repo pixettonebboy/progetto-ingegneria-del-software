@@ -1,0 +1,254 @@
+/* =========================================
+   1. DESIGN SYSTEM (Variabili Globali)
+========================================= */
+:root {
+  --brand-blue: #1A365D;
+  --brand-blue-hover: #2A4365;
+  --brand-red: #E53E3E;
+  --brand-red-hover: #C53030;
+  
+  --bg-color: #E2E8F0; 
+  --card-bg: #FFFFFF;
+  --text-main: #2D3748;
+  --text-muted: #718096;
+  
+  --input-border: #E2E8F0;
+  --input-bg: #F8FAFC;
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+}
+
+.carica-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================================
+   2. HEADER
+========================================= */
+.carica-header {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  background: var(--card-bg);
+  padding: 24px 32px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.carica-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--brand-blue), var(--brand-red));
+}
+
+.carica-header h2 {
+  font-size: 22px;
+  color: var(--brand-blue);
+  margin: 0;
+}
+
+.carica-header button {
+  background: transparent;
+  color: var(--brand-blue);
+  border: 1.5px solid var(--brand-blue);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.carica-header button:hover {
+  background: var(--brand-blue);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 54, 93, 0.15);
+}
+
+/* =========================================
+   3. FORM CARD
+========================================= */
+.carica-card {
+  background: var(--card-bg);
+  width: 100%;
+  max-width: 600px;
+  padding: 40px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Distanza uniforme tra tutti gli elementi del form */
+  position: relative;
+  overflow: hidden;
+}
+
+.carica-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(to right, var(--brand-blue), var(--brand-red));
+}
+
+.carica-card label {
+  font-weight: 600;
+  color: var(--brand-blue);
+  font-size: 15px;
+  margin-bottom: -12px; /* Avvicina la label all'input sottostante */
+}
+
+/* =========================================
+   4. UPLOAD IMMAGINE E ANTEPRIMA
+========================================= */
+/* Stile del contenitore del file */
+input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--input-bg);
+  border: 1.5px dashed var(--text-muted); /* Bordo tratteggiato per dare l'idea della "zona di carico" */
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+input[type="file"]:hover {
+  border-color: var(--brand-blue);
+  background-color: #FFFFFF;
+}
+
+/* Personalizzazione del bottone interno al campo file */
+input[type="file"]::file-selector-button {
+  background-color: var(--brand-blue);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin-right: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: var(--brand-blue-hover);
+}
+
+/* Immagine di anteprima caricata */
+.preview {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--input-border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================================
+   5. INPUT, SELECT E TEXTAREA
+========================================= */
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--input-border);
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  color: var(--text-main);
+  background-color: var(--input-bg);
+  transition: var(--transition);
+  outline: none;
+  font-family: inherit;
+}
+
+select {
+  cursor: pointer;
+  appearance: auto;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder,
+select:invalid {
+  color: #A0AEC0;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  background-color: #FFFFFF;
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 4px rgba(26, 54, 93, 0.1);
+}
+
+/* =========================================
+   6. BOTTONE SUBMIT
+========================================= */
+.carica-card button[type="submit"] {
+  margin-top: 12px;
+  width: 100%;
+  padding: 16px;
+  background-color: var(--brand-blue);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.carica-card button[type="submit"]:hover {
+  background-color: var(--brand-blue-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(26, 54, 93, 0.2);
+}
+
+/* =========================================
+   7. RESPONSIVE DESIGN
+========================================= */
+@media (max-width: 600px) {
+  .carica-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 24px 20px;
+  }
+
+  .carica-header button {
+    width: 100%;
+  }
+
+  .carica-card {
+    padding: 24px 20px;
+  }
+}

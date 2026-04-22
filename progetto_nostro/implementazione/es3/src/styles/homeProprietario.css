@@ -1,0 +1,198 @@
+/* =========================================
+   1. DESIGN SYSTEM (Variabili Globali)
+========================================= */
+:root {
+  --brand-blue: #1A365D;
+  --brand-blue-hover: #2A4365;
+  --brand-red: #E53E3E;
+  --brand-red-hover: #C53030;
+  
+  --bg-color: #E2E8F0; 
+  --card-bg: #FFFFFF;
+  --text-main: #2D3748;
+  --text-muted: #718096;
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+}
+
+.prop-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================================
+   2. HEADER OTTIMIZZATO
+========================================= */
+.prop-header {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+  background: var(--card-bg);
+  padding: 28px 40px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.prop-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--brand-blue), var(--brand-red));
+}
+
+.prop-header .left {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+}
+
+.prop-header img {
+  width: 100px; /* Logo in evidenza */
+  height: auto;
+  object-fit: contain;
+}
+
+.prop-header h2 {
+  font-size: 26px;
+  color: var(--brand-blue);
+  margin-bottom: 4px;
+}
+
+.prop-header p {
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+/* Pulsante Back compatto e laterale */
+.back-btn {
+  background: transparent;
+  color: var(--brand-blue);
+  border: 1.2px solid var(--brand-blue);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  margin-left: 20px;
+}
+
+.back-btn:hover {
+  background: var(--brand-blue);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(26, 54, 93, 0.15);
+}
+
+/* =========================================
+   3. GRID DELLE CARD
+========================================= */
+.prop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.prop-card {
+  background: var(--card-bg);
+  padding: 40px 30px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.prop-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 30px -10px rgba(26, 54, 93, 0.25);
+  border-color: var(--brand-blue);
+}
+
+.prop-card h3 {
+  font-size: 20px;
+  color: var(--brand-blue);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.prop-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* =========================================
+   4. ICONE
+========================================= */
+.icon {
+  width: 60px;
+  height: 60px;
+  background: #EDF2F7;
+  border-radius: 50%;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+/* Assegnazione cromatica per le 3 opzioni */
+.prop-card:nth-child(1) .icon { color: var(--brand-blue); background: rgba(26, 54, 93, 0.08); }
+.prop-card:nth-child(2) .icon { color: var(--brand-red); background: rgba(229, 62, 62, 0.08); }
+.prop-card:nth-child(3) .icon { color: var(--text-main); background: #E2E8F0; }
+
+.prop-card:hover .icon {
+  transform: scale(1.1);
+  color: white;
+}
+
+.prop-card:nth-child(1):hover .icon { background: var(--brand-blue); }
+.prop-card:nth-child(2):hover .icon { background: var(--brand-red); }
+.prop-card:nth-child(3):hover .icon { background: var(--text-main); }
+
+/* =========================================
+   5. RESPONSIVE DESIGN
+========================================= */
+@media (max-width: 650px) {
+  .prop-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 30px 20px;
+  }
+  
+  .prop-header .left {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .back-btn {
+    width: auto;
+    margin-left: 0;
+  }
+}

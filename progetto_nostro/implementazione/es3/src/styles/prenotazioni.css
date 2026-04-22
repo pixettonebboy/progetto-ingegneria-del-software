@@ -1,0 +1,252 @@
+/* =========================================
+   1. DESIGN SYSTEM (Variabili Globali)
+========================================= */
+:root {
+  --brand-blue: #1A365D;
+  --brand-blue-hover: #2A4365;
+  --brand-red: #E53E3E;
+  --brand-red-hover: #C53030;
+  
+  --bg-color: #E2E8F0; 
+  --card-bg: #FFFFFF;
+  --text-main: #2D3748;
+  --text-muted: #718096;
+  
+  --input-border: #E2E8F0;
+  --input-bg: #F8FAFC;
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+}
+
+.pren-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================================
+   2. HEADER
+========================================= */
+.pren-header {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px; /* Leggermente ridotto per dare spazio ai titoli di sezione */
+  background: var(--card-bg);
+  padding: 24px 32px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.pren-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--brand-blue), var(--brand-red));
+}
+
+.pren-header h2 {
+  font-size: 24px;
+  color: var(--brand-blue);
+  margin: 0;
+}
+
+.pren-header button {
+  background: transparent;
+  color: var(--brand-blue);
+  border: 1.5px solid var(--brand-blue);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.pren-header button:hover {
+  background: var(--brand-blue);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 54, 93, 0.15);
+}
+
+/* =========================================
+   3. TITOLI DI SEZIONE (Attive / Passate)
+========================================= */
+.section-title {
+  width: 100%;
+  max-width: 1000px;
+  font-size: 20px;
+  color: var(--brand-blue);
+  margin-top: 24px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--input-border);
+  text-align: left;
+}
+
+/* =========================================
+   4. GRIGLIA PRENOTAZIONI
+========================================= */
+.pren-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 40px; /* Spazio extra tra una griglia e l'altra */
+}
+
+/* Testo mostrato quando non ci sono prenotazioni */
+.pren-grid > p {
+  color: var(--text-muted);
+  font-size: 16px;
+  font-style: italic;
+  grid-column: 1 / -1; /* Fa occupare tutto lo spazio disponibile */
+}
+
+/* =========================================
+   5. CARD PRENOTAZIONE
+========================================= */
+.pren-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.pren-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px -10px rgba(26, 54, 93, 0.25);
+}
+
+.pren-card img {
+  width: 100%;
+  height: 180px; /* Leggermente piÃ¹ compatta rispetto ai risultati di ricerca */
+  object-fit: cover;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+/* =========================================
+   6. INFO E ALLINEAMENTO DATI
+========================================= */
+.pren-card .info {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.pren-card .info h3 {
+  color: var(--brand-blue);
+  font-size: 18px;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+/* Effetto "Scontrino" per allineare i dati */
+.pren-card .info p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--input-border);
+}
+
+.pren-card .info p:last-of-type {
+  border-bottom: none;
+  margin-bottom: 20px;
+}
+
+.pren-card .info p strong {
+  color: var(--text-main);
+}
+
+/* =========================================
+   7. BOTTONI
+========================================= */
+.pren-card .info button {
+  margin-top: auto; /* Spinge i bottoni sempre in fondo alla card */
+  width: 100%;
+  padding: 14px;
+  background-color: var(--brand-blue);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.pren-card .info button:hover {
+  background-color: var(--brand-blue-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 54, 93, 0.2);
+}
+
+/* Contenitore per i due bottoni (Prenotazioni passate) */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.actions button {
+  margin-top: 0 !important; /* Disabilita il margin-top di default del bottone singolo */
+}
+
+/* Bottone secondario per la recensione */
+.actions .review-btn {
+  background-color: transparent;
+  color: var(--brand-blue);
+  border: 1.5px solid var(--brand-blue);
+}
+
+.actions .review-btn:hover {
+  background-color: var(--brand-blue);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   8. RESPONSIVE DESIGN
+========================================= */
+@media (max-width: 600px) {
+  .pren-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 24px 20px;
+  }
+
+  .pren-header button {
+    width: 100%;
+  }
+
+  .pren-grid {
+    grid-template-columns: 1fr;
+  }
+}

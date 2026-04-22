@@ -1,0 +1,192 @@
+/* =========================================
+   1. DESIGN SYSTEM (Variabili Globali)
+========================================= */
+:root {
+  --brand-blue: #1A365D;
+  --brand-blue-hover: #2A4365;
+  --brand-red: #E53E3E;
+  --brand-red-hover: #C53030;
+  
+  /* Colori specifici per le recensioni */
+  --star-active: #F6AD55; /* Arancione/Oro brillante */
+  --star-empty: #CBD5E1;  /* Grigio chiaro */
+  
+  --bg-color: #E2E8F0; 
+  --card-bg: #FFFFFF;
+  --text-main: #2D3748;
+  --text-muted: #718096;
+  
+  --input-border: #E2E8F0;
+  --input-bg: #F8FAFC;
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+}
+
+.rec-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%);
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centra perfettamente la card nello schermo */
+}
+
+/* =========================================
+   2. CARD PRINCIPALE
+========================================= */
+.rec-card {
+  background: var(--card-bg);
+  width: 100%;
+  max-width: 500px;
+  padding: 48px 40px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Linea sfumata superiore iconica di BoBox */
+.rec-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(to right, var(--brand-blue), var(--brand-red));
+}
+
+.rec-card h2 {
+  font-size: 26px;
+  color: var(--brand-blue);
+  margin-bottom: 32px;
+}
+
+/* =========================================
+   3. SISTEMA DI RATING A STELLE
+========================================= */
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.star {
+  font-size: 45px;
+  color: var(--star-empty);
+  cursor: pointer;
+  /* Transizione fluida per colore e rimbalzo */
+  transition: color 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); 
+  user-select: none; /* Impedisce di selezionare il testo della stella per sbaglio */
+}
+
+/* Colore stella piena/hover */
+.star.active {
+  color: var(--star-active);
+}
+
+/* Effetto di ingrandimento quando ci si passa sopra */
+.star:hover {
+  transform: scale(1.2);
+}
+
+.rating-text {
+  font-size: 15px;
+  color: var(--brand-blue);
+  font-weight: 600;
+  min-height: 24px; /* Evita che il layout salti prima di aver cliccato una stella */
+  margin-bottom: 24px;
+}
+
+/* =========================================
+   4. AREA DI TESTO (Textarea)
+========================================= */
+textarea {
+  width: 100%;
+  min-height: 140px; /* Abbastanza alta da invitare a scrivere */
+  padding: 16px;
+  border: 1.5px solid var(--input-border);
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  color: var(--text-main);
+  background-color: var(--input-bg);
+  transition: var(--transition);
+  outline: none;
+  font-family: inherit;
+  resize: vertical; /* Permette di allargarla solo verso il basso */
+  margin-bottom: 32px;
+}
+
+textarea::placeholder {
+  color: #A0AEC0;
+}
+
+/* Effetto Focus coerente con gli altri input */
+textarea:focus {
+  background-color: #FFFFFF;
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 4px rgba(26, 54, 93, 0.1);
+}
+
+/* =========================================
+   5. BOTTONI
+========================================= */
+/* Bottone Principale (Invia) */
+.rec-card button {
+  width: 100%;
+  padding: 16px;
+  background-color: var(--brand-blue);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: 12px;
+}
+
+.rec-card button:hover {
+  background-color: var(--brand-blue-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(26, 54, 93, 0.2);
+}
+
+/* Bottone Secondario (Annulla) */
+.rec-card .back-btn {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1.5px solid transparent;
+  box-shadow: none;
+}
+
+.rec-card .back-btn:hover {
+  background-color: var(--input-bg);
+  color: var(--brand-red); /* Diventa rosso per indicare la cancellazione dell'azione */
+  transform: none;
+}
+
+/* =========================================
+   6. RESPONSIVE DESIGN
+========================================= */
+@media (max-width: 600px) {
+  .rec-container {
+    padding: 20px;
+  }
+  
+  .rec-card {
+    padding: 32px 24px;
+  }
+  
+  .star {
+    font-size: 38px; /* Stelle leggermente piÃ¹ piccole su schermi stretti */
+  }
+}

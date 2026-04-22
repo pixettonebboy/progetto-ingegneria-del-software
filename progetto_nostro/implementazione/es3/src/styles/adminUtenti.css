@@ -1,0 +1,267 @@
+/* =========================================
+   1. DESIGN SYSTEM (Variabili Globali)
+========================================= */
+:root {
+  --brand-blue: #1A365D;
+  --brand-blue-hover: #2A4365;
+  --brand-red: #E53E3E;
+  --brand-red-hover: #C53030;
+  
+  /* Colori specifici per gli stati utente */
+  --status-green-bg: #E6FFFA;
+  --status-green-text: #2C7A7B;
+  --status-red-bg: #FFF5F5;
+  --status-red-text: #C53030;
+  
+  --bg-color: #E2E8F0; 
+  --card-bg: #FFFFFF;
+  --text-main: #2D3748;
+  --text-muted: #718096;
+  
+  --input-border: #E2E8F0;
+  --input-bg: #F8FAFC;
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+}
+
+.admin-utenti-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================================
+   2. HEADER
+========================================= */
+.admin-utenti-header {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  background: var(--card-bg);
+  padding: 24px 32px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-utenti-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--brand-blue), var(--brand-red));
+}
+
+.admin-utenti-header h2 {
+  font-size: 22px;
+  color: var(--brand-blue);
+  margin: 0;
+}
+
+.admin-utenti-header button {
+  background: transparent;
+  color: var(--brand-blue);
+  border: 1.5px solid var(--brand-blue);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.admin-utenti-header button:hover {
+  background: var(--brand-blue);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 54, 93, 0.15);
+}
+
+/* =========================================
+   3. BARRA DI RICERCA
+========================================= */
+.search-bar {
+  width: 100%;
+  max-width: 800px;
+  padding: 18px 24px;
+  margin-bottom: 32px;
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-md);
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow-soft);
+  font-size: 16px;
+  color: var(--text-main);
+  transition: var(--transition);
+  outline: none;
+  font-family: inherit;
+}
+
+.search-bar::placeholder {
+  color: #A0AEC0;
+}
+
+.search-bar:focus {
+  border-color: var(--brand-blue);
+  box-shadow: 0 10px 25px -5px rgba(26, 54, 93, 0.1), 0 0 0 4px rgba(26, 54, 93, 0.1);
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   4. LISTA UTENTI
+========================================= */
+.admin-utenti-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.admin-utenti-list > p {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 16px;
+  font-style: italic;
+  padding: 20px;
+}
+
+/* =========================================
+   5. CARD UTENTE
+========================================= */
+.utente-card {
+  background: var(--card-bg);
+  padding: 24px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.utente-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.15);
+  border-color: var(--input-border);
+}
+
+.utente-card .info h3 {
+  color: var(--brand-blue);
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.utente-card .info p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+/* =========================================
+   6. BADGE DI STATO (Pills)
+========================================= */
+.status {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 20px; /* Forma a pillola */
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 !important; /* Sovrascrive il margin-bottom del p genitore */
+}
+
+.status.active {
+  background-color: var(--status-green-bg);
+  color: var(--status-green-text);
+}
+
+.status.blocked {
+  background-color: var(--status-red-bg);
+  color: var(--status-red-text);
+}
+
+/* =========================================
+   7. PULSANTI D'AZIONE (Blocca/Sblocca)
+========================================= */
+.lock-btn,
+.unlock-btn {
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+/* Stile per bloccare (Azione distruttiva) */
+.lock-btn {
+  background-color: var(--status-red-bg);
+  color: var(--brand-red);
+  border: 1.5px solid #FED7D7;
+}
+
+.lock-btn:hover {
+  background-color: var(--brand-red);
+  color: white;
+  border-color: var(--brand-red);
+  transform: scale(1.05);
+}
+
+/* Stile per sbloccare (Azione positiva) */
+.unlock-btn {
+  background-color: #F0FDF4; /* Verde chiarissimo */
+  color: #16A34A; /* Verde scuro */
+  border: 1.5px solid #BBF7D0;
+}
+
+.unlock-btn:hover {
+  background-color: #16A34A;
+  color: white;
+  border-color: #16A34A;
+  transform: scale(1.05);
+}
+
+/* =========================================
+   8. RESPONSIVE DESIGN
+========================================= */
+@media (max-width: 600px) {
+  .admin-utenti-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 24px 20px;
+  }
+
+  .admin-utenti-header button {
+    width: 100%;
+  }
+
+  /* Su mobile la card si impila verticalmente */
+  .utente-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .lock-btn,
+  .unlock-btn {
+    width: 100%;
+  }
+}

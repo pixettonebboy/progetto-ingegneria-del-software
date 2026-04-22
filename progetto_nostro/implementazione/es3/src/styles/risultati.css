@@ -1,0 +1,191 @@
+/* =========================================
+   1. DESIGN SYSTEM (Variabili Globali)
+========================================= */
+:root {
+  --brand-blue: #1A365D;
+  --brand-blue-hover: #2A4365;
+  --brand-red: #E53E3E;
+  --brand-red-hover: #C53030;
+  
+  --bg-color: #E2E8F0; 
+  --card-bg: #FFFFFF;
+  --text-main: #2D3748;
+  --text-muted: #718096;
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+}
+
+.results-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================================
+   2. HEADER E PULSANTE MODIFICA FILTRI
+========================================= */
+.results-header {
+  width: 100%;
+  max-width: 1000px; /* PiÃ¹ largo per accogliere la griglia sottostante */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  background: var(--card-bg);
+  padding: 24px 32px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.results-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--brand-blue), var(--brand-red));
+}
+
+.results-header h2 {
+  font-size: 24px;
+  color: var(--brand-blue);
+  margin: 0;
+}
+
+/* Bottone secondario (Torna indietro/Modifica) */
+.results-header button {
+  background: transparent;
+  color: var(--brand-blue);
+  border: 1.5px solid var(--brand-blue);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.results-header button:hover {
+  background: var(--brand-blue);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 54, 93, 0.15);
+}
+
+/* =========================================
+   3. GRIGLIA RISULTATI
+========================================= */
+.results-grid {
+  display: grid;
+  /* Crea automaticamente colonne da minimo 300px, riempiendo lo spazio */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* =========================================
+   4. CARD DEL SINGOLO POSTO AUTO
+========================================= */
+.result-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden; /* Fondamentale per far arrotondare anche gli angoli dell'immagine */
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.result-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px -10px rgba(26, 54, 93, 0.25);
+}
+
+/* Immagine del posto auto */
+.result-card img {
+  width: 100%;
+  height: 200px; /* Altezza fissa per tutte le foto */
+  object-fit: cover; /* Taglia l'immagine per riempire il blocco senza deformarla */
+  border-bottom: 1px solid #E2E8F0;
+}
+
+/* Contenitore info testuali */
+.info {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Spinge il bottone sempre in fondo alla card */
+}
+
+.info h3 {
+  color: var(--brand-blue);
+  font-size: 18px;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.info p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.info p strong {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* =========================================
+   5. BOTTONE "VISUALIZZA"
+========================================= */
+.info button {
+  margin-top: 24px; /* Distanzia il bottone dal testo sopra */
+  width: 100%;
+  padding: 14px;
+  background-color: var(--brand-blue);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.info button:hover {
+  background-color: var(--brand-blue-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 54, 93, 0.2);
+}
+
+/* =========================================
+   6. RESPONSIVE DESIGN
+========================================= */
+@media (max-width: 600px) {
+  .results-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 24px 20px;
+  }
+
+  .results-header button {
+    width: 100%;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr; /* Su mobile, una sola colonna */
+  }
+}

@@ -1,0 +1,160 @@
+:root {
+  --brand-blue: #1A365D;
+  --brand-blue-hover: #2A4365;
+  --brand-red: #E53E3E;
+  --brand-red-hover: #C53030;
+  
+  /* Sfondo leggermente pi첫 scuro per far risaltare il bianco */
+  --bg-color: #E2E8F0; 
+  --card-bg: #FFFFFF;
+  --text-main: #2D3748;
+  --text-muted: #718096;
+  
+  --radius-md: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Ombra pi첫 intensa per staccare le card dallo sfondo */
+  --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+}
+
+.home-container {
+  min-height: 100vh;
+  /* Gradiente pi첫 contrastato rispetto al bianco delle card */
+  background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================================
+   1. HEADER
+========================================= */
+.home-header {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 48px;
+  background: var(--card-bg);
+  padding: 24px 32px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.home-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--brand-blue), var(--brand-red));
+}
+
+.home-header img {
+  width: 70px;
+  height: auto;
+  object-fit: contain;
+}
+
+.home-header h2 {
+  font-size: 24px;
+  color: var(--brand-blue);
+  margin-bottom: 4px;
+}
+
+.home-header p {
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+/* =========================================
+   2. GRID DELLE CARD (Pulsanti)
+========================================= */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 40px 30px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  /* Ombra ancora pi첫 scura in hover per dare il senso di sollevamento */
+  box-shadow: 0 20px 30px -10px rgba(26, 54, 93, 0.25);
+  border-color: var(--brand-blue);
+}
+
+.card h3 {
+  font-size: 20px;
+  color: var(--brand-blue);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* =========================================
+   3. ICONE
+========================================= */
+.icon {
+  width: 60px;
+  height: 60px;
+  background: #EDF2F7;
+  border-radius: 50%;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  position: relative;
+}
+
+.card:nth-child(1) .icon { color: var(--brand-blue); background: rgba(26, 54, 93, 0.08); }
+.card:nth-child(2) .icon { color: var(--brand-red); background: rgba(229, 62, 62, 0.08); }
+.card:nth-child(3) .icon { color: var(--text-main); background: #E2E8F0; }
+
+.card:hover .icon {
+  transform: scale(1.1);
+  background: var(--brand-blue);
+  color: white;
+}
+
+.card:nth-child(2):hover .icon {
+  background: var(--brand-red);
+}
+
+@media (max-width: 600px) {
+  .home-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+  }
+  
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,269 @@
+/* =========================================
+   1. DESIGN SYSTEM (Variabili Globali)
+========================================= */
+:root {
+  --brand-blue: #1A365D;
+  --brand-blue-hover: #2A4365;
+  --brand-red: #E53E3E;
+  --brand-red-hover: #C53030;
+  
+  --bg-color: #E2E8F0; 
+  --card-bg: #FFFFFF;
+  --text-main: #2D3748;
+  --text-muted: #718096;
+  
+  --input-border: #E2E8F0;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+}
+
+.posto-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================================
+   2. HEADER
+========================================= */
+.posto-header {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  background: var(--card-bg);
+  padding: 24px 32px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.posto-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--brand-blue), var(--brand-red));
+}
+
+.posto-header h2 {
+  font-size: 24px;
+  color: var(--brand-blue);
+  margin: 0;
+}
+
+.posto-header button {
+  background: transparent;
+  color: var(--brand-blue);
+  border: 1.5px solid var(--brand-blue);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.posto-header button:hover {
+  background: var(--brand-blue);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 54, 93, 0.15);
+}
+
+/* =========================================
+   3. IMMAGINE "HERO" PRINCIPALE
+========================================= */
+.posto-img {
+  width: 100%;
+  max-width: 1100px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 32px;
+}
+
+/* =========================================
+   4. LAYOUT INFORMAZIONI (2 Colonne)
+========================================= */
+.posto-info {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  gap: 32px;
+  margin-bottom: 32px;
+  align-items: flex-start; /* Evita che le due colonne abbiano per forza la stessa altezza */
+}
+
+/* --- COLONNA SINISTRA: Dettagli --- */
+.posto-info .left {
+  flex: 2; /* Prende due terzi dello spazio */
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+
+.posto-info .left h3 {
+  font-size: 22px;
+  color: var(--brand-blue);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--input-border);
+}
+
+/* Spaziatura prima del secondo h3 ("Proprietario") */
+.posto-info .left h3:nth-of-type(2) {
+  margin-top: 40px; 
+}
+
+.posto-info .left p {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.posto-info .left p strong {
+  color: var(--text-main);
+}
+
+/* --- COLONNA DESTRA: Box Prenotazione --- */
+.posto-info .right {
+  flex: 1; /* Prende un terzo dello spazio */
+}
+
+.prenota-box {
+  background: var(--card-bg);
+  padding: 32px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  position: sticky; /* Rimane fisso mentre si scorre! */
+  top: 24px;
+  border-top: 6px solid var(--brand-red); /* Dettaglio rosso per catturare l'attenzione */
+}
+
+.prenota-box h3 {
+  font-size: 32px;
+  color: var(--brand-blue);
+  margin-bottom: 24px;
+}
+
+.prenota-btn {
+  width: 100%;
+  padding: 16px;
+  background-color: var(--brand-blue);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.prenota-btn:hover {
+  background-color: var(--brand-blue-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(26, 54, 93, 0.2);
+}
+
+/* =========================================
+   5. RECENSIONI
+========================================= */
+.recensioni {
+  width: 100%;
+  max-width: 1100px;
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+
+.recensioni h3 {
+  font-size: 22px;
+  color: var(--brand-blue);
+  margin-bottom: 8px;
+}
+
+.stelle {
+  font-size: 20px;
+  margin-bottom: 32px;
+  color: #F6AD55; /* Arancione per le stelle */
+}
+
+.rec-card {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--input-border);
+}
+
+/* Togliamo il bordo all'ultima recensione */
+.rec-card:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.rec-card p:first-child {
+  font-size: 16px;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.rec-card p:last-child {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* =========================================
+   6. RESPONSIVE DESIGN
+========================================= */
+@media (max-width: 850px) {
+  /* Su tablet e smartphone l'immagine si abbassa un po' */
+  .posto-img {
+    height: 250px;
+  }
+
+  /* Le due colonne si mettono una sopra l'altra */
+  .posto-info {
+    flex-direction: column;
+  }
+  
+  .posto-info .left,
+  .posto-info .right {
+    width: 100%;
+  }
+
+  /* Togliamo lo sticky su mobile perchÃ© prenderebbe troppo spazio */
+  .prenota-box {
+    position: static; 
+  }
+}
+
+@media (max-width: 600px) {
+  .posto-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 24px 20px;
+  }
+  
+  .posto-info .left,
+  .recensioni {
+    padding: 24px 20px;
+  }
+}
