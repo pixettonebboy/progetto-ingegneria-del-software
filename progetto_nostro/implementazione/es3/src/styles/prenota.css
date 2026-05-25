@@ -1,0 +1,374 @@
+:root {
+  --brand-blue: #1A365D;
+  --brand-blue-hover: #2A4365;
+  --brand-red: #E53E3E;
+  --brand-green: #38A169; /* Colore aggiunto per il successo/pagamento */
+  --brand-green-hover: #2F855A;
+  
+  --bg-color: #E2E8F0; 
+  --card-bg: #FFFFFF;
+  --text-main: #2D3748;
+  --text-muted: #718096;
+  
+  --radius-md: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================
+   1. CONTENITORE PRINCIPALE & HEADER
+========================================= */
+.prenota-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.prenota-header {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  background: var(--card-bg);
+  padding: 20px 32px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.prenota-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--brand-blue), var(--brand-red));
+}
+
+.prenota-header h2 {
+  font-size: 22px;
+  color: var(--brand-blue);
+  margin: 0;
+}
+
+.prenota-header button {
+  background: transparent;
+  border: 2px solid #E2E8F0;
+  color: var(--text-main);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.prenota-header button:hover {
+  border-color: var(--brand-blue);
+  color: var(--brand-blue);
+  background: #EDF2F7;
+}
+
+/* =========================================
+   2. CARD E GRIGLIA DATE
+========================================= */
+.prenota-card {
+  width: 100%;
+  max-width: 600px;
+  background: var(--card-bg);
+  padding: 40px 32px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+}
+
+.date-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--brand-blue);
+  margin-bottom: 8px;
+}
+
+.input-group input[type="date"] {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #E2E8F0;
+  border-radius: 8px;
+  font-size: 16px;
+  color: var(--text-main);
+  background-color: #F7FAFC;
+  transition: var(--transition);
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.input-group input[type="date"]:focus {
+  outline: none;
+  border-color: var(--brand-blue);
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.1);
+}
+
+/* =========================================
+   3. BOX RIEPILOGO PREZZO
+========================================= */
+.riepilogo-box {
+  background: #EDF2F7;
+  border: 2px dashed #CBD5E1;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  transition: var(--transition);
+  margin-bottom: 32px;
+}
+
+.riepilogo-box.attivo {
+  background: rgba(26, 54, 93, 0.05);
+  border-color: var(--brand-blue);
+  border-style: solid;
+}
+
+.riepilogo-testo {
+  color: var(--text-muted);
+  font-size: 15px;
+  margin: 0 0 12px 0;
+  font-weight: 500;
+}
+
+.prezzo-totale {
+  font-size: 20px;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.prezzo-totale span {
+  font-size: 36px;
+  color: var(--brand-blue);
+  font-weight: 800;
+  display: block;
+  margin-top: 4px;
+}
+
+/* =========================================
+   4. PULSANTE PAGA
+========================================= */
+.btn-paga {
+  background: var(--brand-green);
+  color: #FFFFFF;
+  padding: 18px;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 6px -1px rgba(56, 161, 105, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-paga:hover:not(:disabled) {
+  background: var(--brand-green-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(56, 161, 105, 0.3);
+}
+
+.btn-paga:disabled {
+  background: #CBD5E1;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* =========================================
+   5. RESPONSIVE
+========================================= */
+@media (max-width: 600px) {
+  .prenota-header {
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .prenota-card {
+    padding: 30px 20px;
+  }
+
+  .date-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* =========================================
+   2. CALENDARIO CUSTOM
+========================================= */
+.prenota-card {
+  width: 100%;
+  max-width: 600px;
+  background: var(--card-bg);
+  padding: 40px 32px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+}
+
+.calendario-custom {
+  background: #F7FAFC;
+  border: 2px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 32px;
+}
+
+.calendario-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.calendario-header h3 {
+  margin: 0;
+  color: var(--brand-blue);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.calendario-header button {
+  background: #EDF2F7;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: var(--brand-blue);
+  transition: var(--transition);
+}
+
+.calendario-header button:hover {
+  background: var(--brand-blue);
+  color: white;
+}
+
+.giorni-settimana {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.griglia-giorni {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.giorno-vuoto {
+  padding: 10px;
+}
+
+.giorno-cella {
+  padding: 10px 0;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s;
+  background: white;
+  border: 1px solid #E2E8F0;
+}
+
+.giorno-cella:hover:not(.passato):not(.non-disponibile) {
+  border-color: var(--brand-blue);
+  background: #EDF2F7;
+}
+
+/* Stili specifici per i vari stati dei giorni */
+.passato {
+  color: #CBD5E1;
+  background: transparent;
+  border-color: transparent;
+  cursor: not-allowed;
+}
+
+.non-disponibile {
+  color: var(--brand-red);
+  background: rgba(229, 62, 62, 0.08);
+  border-color: transparent;
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+
+.selezionato {
+  background: var(--brand-blue);
+  color: white;
+  border-color: var(--brand-blue);
+  font-weight: 700;
+}
+
+.in-range {
+  background: rgba(26, 54, 93, 0.1);
+  color: var(--brand-blue);
+  border-color: rgba(26, 54, 93, 0.2);
+}
+
+/* Info testuali sotto il calendario */
+.date-selezionate-box {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: var(--text-main);
+  border-top: 1px solid #E2E8F0;
+  padding-top: 16px;
+}
+
+.date-selezionate-box p {
+  margin: 0;
+}
+
+.btn-reset {
+  background: transparent;
+  border: 1px solid var(--text-muted);
+  color: var(--text-muted);
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: var(--transition);
+}
+
+.btn-reset:hover {
+  background: #EDF2F7;
+  color: var(--text-main);
+}

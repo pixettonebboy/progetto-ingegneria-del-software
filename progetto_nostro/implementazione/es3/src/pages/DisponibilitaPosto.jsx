@@ -1,20 +1,48 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "../styles/disponibilita.css";
 
 function DisponibilitaPosto() {
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const [dataInizio, setDataInizio] = useState("");
   const [dataFine, setDataFine] = useState("");
 
-  const [disponibilita, setDisponibilita] = useState([
-    {
-      id: 1,
-      inizio: "2026-04-20",
-      fine: "2026-04-30",
-    },
-  ]);
+  // DATI DIVERSI PER OGNI PAGINA
+  const disponibilitaIniziali = {
+    1: [
+      {
+        id: 1,
+        inizio: "2026-06-10",
+        fine: "2026-06-15",
+      },
+      {
+        id: 2,
+        inizio: "2026-07-01",
+        fine: "2026-07-10",
+      },
+    ],
+
+    2: [
+      {
+        id: 3,
+        inizio: "2026-05-20",
+        fine: "2026-05-25",
+      },
+      {
+        id: 4,
+        inizio: "2026-08-03",
+        fine: "2026-08-12",
+      },
+    ],
+
+    3: [],
+  };
+
+  const [disponibilita, setDisponibilita] = useState(
+    disponibilitaIniziali[id] || []
+  );
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -33,8 +61,10 @@ function DisponibilitaPosto() {
     setDataFine("");
   };
 
-  const handleDelete = (id) => {
-    setDisponibilita(disponibilita.filter((d) => d.id !== id));
+  const handleDelete = (idDaEliminare) => {
+    setDisponibilita(
+      disponibilita.filter((d) => d.id !== idDaEliminare)
+    );
   };
 
   return (
@@ -53,6 +83,7 @@ function DisponibilitaPosto() {
       <form className="disp-form" onSubmit={handleAdd}>
 
         <div className="row">
+
           <input
             type="date"
             value={dataInizio}
@@ -64,9 +95,12 @@ function DisponibilitaPosto() {
             value={dataFine}
             onChange={(e) => setDataFine(e.target.value)}
           />
+
         </div>
 
-        <button type="submit">Aggiungi disponibilità</button>
+        <button type="submit">
+          Aggiungi disponibilità
+        </button>
 
       </form>
 

@@ -14,7 +14,7 @@ function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
 
-        if (username === "Achille" && password === "1") {
+        if ((username === "Achille" && password === "1") || (username === "u1" && password === "1") || (username === "u2" && password === "1")) {
       navigate("/homeUser");} else {
       setAttempts(attempts + 1);
 

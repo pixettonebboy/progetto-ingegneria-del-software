@@ -13,10 +13,15 @@ import DisponibilitaPosto from "./pages/DisponibilitaPosto";
 import CaricaPosto from "./pages/CaricaPosto";
 import HomeAdmin from "./pages/HomeAdmin";
 import AdminUtenti from "./pages/AdminUtenti";
+import ModificaDati from "./pages/ModificaDati";
+import Prenota from "./pages/Prenota";
+import PrenotazioniRicevute from "./pages/PrenotazioniRicevute";
+import IMieiPosti from "./pages/IMieiPosti";
+import InfoUtenti from "./pages/InfoUtenti";
 
-
-
-
+// 1. Importa la nuova pagina del gateway di pagamento
+import PaymentGateway from "./pages/PaymentGateway"; 
+import LogSistema from "./pages/LogSistema";
 
 function App() {
   return (
@@ -33,12 +38,20 @@ function App() {
         <Route path="/prenotazioni" element={<Prenotazioni />} />
         <Route path="/recensione/:id" element={<Recensione />} />
         <Route path="/proprietario" element={<HomeProprietario />} />
-        <Route path="/tuoi-posti" element={<DisponibilitaPosto />} /> /*OCIOOO */
+        <Route path="/admin/logs" element={<LogSistema />} />
+        <Route path="/admin/info-utenti" element={<InfoUtenti />} />
+        <Route path="/modificaDisponibilita/:id" element={<DisponibilitaPosto />} /> {/*OCIOOO */}
+        <Route path="/tuoi-posti" element={<IMieiPosti />} />
         <Route path="/carica-posto" element={<CaricaPosto />} />
+        <Route path="/prenotazioni-ricevute" element={<PrenotazioniRicevute />} />
+        <Route path="/prenota" element={<Prenota />} />
         <Route path="/admin" element={<HomeAdmin />} />
-        <Route path="/admin/utenti" element={<AdminUtenti />} />
+        <Route path="/admin/utenti" element={<AdminUtenti />} /> 
+        
 
-
+<Route path="/profilo" element={<ModificaDati />} />
+        {/* 2. Nuova rotta aggiunta per il pagamento esterno */}
+        <Route path="/pagamento" element={<PaymentGateway />} />
 
         {/* Future pages */}
         {/* <Route path="/home" element={<Home />} /> */}

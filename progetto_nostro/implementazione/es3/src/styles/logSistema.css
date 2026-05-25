@@ -1,0 +1,272 @@
+/* =========================================
+   1. DESIGN SYSTEM
+========================================= */
+:root {
+  --brand-blue: #1A365D;
+  --brand-blue-hover: #2A4365;
+  --brand-red: #E53E3E;
+  --brand-orange: #DD6B20;
+  
+  --bg-color: #E2E8F0; 
+  --card-bg: #FFFFFF;
+  --text-main: #2D3748;
+  --text-muted: #718096;
+  
+  --input-border: #E2E8F0;
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-soft: 0 4px 10px -2px rgba(0, 0, 0, 0.05); /* Ombra più leggera per una lista fitta */
+}
+
+.log-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================================
+   2. HEADER
+========================================= */
+.log-header {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  background: var(--card-bg);
+  padding: 24px 32px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.log-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--brand-blue), var(--brand-red));
+}
+
+.log-header h2 {
+  font-size: 24px;
+  color: var(--brand-blue);
+  margin: 0;
+}
+
+.log-header button {
+  background: transparent;
+  color: var(--brand-blue);
+  border: 1.5px solid var(--brand-blue);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.log-header button:hover {
+  background: var(--brand-blue);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   3. FILTRI
+========================================= */
+.log-filters {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.log-filters button {
+  background: var(--card-bg);
+  border: 1px solid var(--input-border);
+  padding: 10px 20px;
+  border-radius: 20px; /* Stile pillola per i filtri */
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.log-filters button:hover {
+  background: #EDF2F7;
+  color: var(--brand-blue);
+}
+
+.log-filters button.active {
+  background: var(--brand-blue);
+  color: white;
+  border-color: var(--brand-blue);
+}
+
+/* =========================================
+   4. LISTA LOG (Card Orizzontali)
+========================================= */
+.log-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 40px;
+}
+
+.no-logs {
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 20px;
+}
+
+.log-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  align-items: stretch; /* Permette alla border-left di coprire l'altezza intera */
+  padding: 20px 24px;
+  transition: var(--transition);
+  border-left: 6px solid transparent;
+}
+
+.log-card:hover {
+  transform: translateX(4px); /* Animazione laterale anziché verticale per le liste */
+  box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Differenziazione Visiva tra le Classi Derivate */
+.log-card.operazione {
+  border-left-color: var(--brand-blue);
+}
+
+.log-card.messaggio {
+  border-left-color: var(--brand-orange);
+}
+
+/* =========================================
+   5. CONTENUTO LOG
+========================================= */
+.log-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 200px;
+  padding-right: 24px;
+  border-right: 1px dashed var(--input-border);
+}
+
+.log-time {
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 14px;
+}
+
+.log-id {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: monospace;
+}
+
+.log-details {
+  flex: 1;
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* Badge indicatore di Sottoclasse */
+.badge-type {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.operazione-badge {
+  background: rgba(26, 54, 93, 0.1);
+  color: var(--brand-blue);
+}
+
+.messaggio-badge {
+  background: rgba(221, 107, 32, 0.1);
+  color: var(--brand-orange);
+}
+
+.log-content {
+  margin: 0;
+  font-size: 15px;
+  color: var(--text-main);
+}
+
+.log-content code {
+  background: #EDF2F7;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--brand-blue);
+  font-weight: 600;
+}
+
+.message-text {
+  font-style: italic;
+  color: var(--brand-orange);
+}
+
+/* =========================================
+   6. RESPONSIVE DESIGN
+========================================= */
+@media (max-width: 768px) {
+  .log-filters {
+    flex-wrap: wrap;
+  }
+  
+  .log-card {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .log-meta {
+    border-right: none;
+    border-bottom: 1px dashed var(--input-border);
+    padding-right: 0;
+    padding-bottom: 16px;
+  }
+
+  .log-details {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .log-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 24px 20px;
+  }
+
+  .log-header button {
+    width: 100%;
+  }
+}

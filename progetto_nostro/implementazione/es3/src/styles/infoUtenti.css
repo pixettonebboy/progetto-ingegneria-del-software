@@ -1,0 +1,201 @@
+/* =========================================
+   1. DESIGN SYSTEM
+========================================= */
+:root {
+  --brand-blue: #1A365D;
+  --brand-blue-hover: #2A4365;
+  --brand-red: #E53E3E;
+  
+  --bg-color: #E2E8F0; 
+  --card-bg: #FFFFFF;
+  --text-main: #2D3748;
+  --text-muted: #718096;
+  
+  --input-border: #E2E8F0;
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+}
+
+.info-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================================
+   2. HEADER
+========================================= */
+.info-header {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  background: var(--card-bg);
+  padding: 24px 32px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.info-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--brand-blue), var(--brand-red));
+}
+
+.info-header h2 {
+  font-size: 24px;
+  color: var(--brand-blue);
+  margin: 0;
+}
+
+.info-header button {
+  background: transparent;
+  color: var(--brand-blue);
+  border: 1.5px solid var(--brand-blue);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.info-header button:hover {
+  background: var(--brand-blue);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 54, 93, 0.15);
+}
+
+/* =========================================
+   3. GRIGLIA UTENTI
+========================================= */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 40px;
+}
+
+/* =========================================
+   4. CARD UTENTE
+========================================= */
+.user-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: 24px;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.user-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 30px -10px rgba(26, 54, 93, 0.20);
+}
+
+/* Intestazione della singola card */
+.user-card .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--input-border);
+}
+
+.user-card .top h3 {
+  color: var(--brand-blue);
+  font-size: 18px;
+  margin: 0;
+}
+
+/* =========================================
+   5. BADGE DI STATO
+========================================= */
+.user-card .top span {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.user-card .top span.active {
+  background-color: rgba(56, 161, 105, 0.15);
+  color: #2F855A;
+}
+
+.user-card .top span.blocked {
+  background-color: rgba(229, 62, 62, 0.15);
+  color: var(--brand-red-hover);
+}
+
+/* =========================================
+   6. INFO E ALLINEAMENTO DATI
+========================================= */
+.user-card p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--input-border);
+}
+
+.user-card p:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.user-card p strong {
+  color: var(--text-main);
+}
+
+/* Evidenzia il ruolo visivamente */
+.user-card p:nth-child(3) {
+  font-weight: 600;
+  color: var(--brand-blue);
+}
+
+/* =========================================
+   7. RESPONSIVE DESIGN
+========================================= */
+@media (max-width: 600px) {
+  .info-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 24px 20px;
+  }
+
+  .info-header button {
+    width: 100%;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
