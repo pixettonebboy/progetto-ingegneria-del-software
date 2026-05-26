@@ -8,11 +8,11 @@ function LogSistema() {
   // DATI FITTIZI: 50 log totali
   // Includono tutti i tipi di operazioni dell'enum UML e la lista di utenti fornita.
   const listaVoceLog = [
-    { id: "LOG-050", dataOra: "2026-05-26T08:28:45", tipo: "operazione", operazione: "Visualizza_Log", utente: "BeatriceVeronesi" },
+    { id: "LOG-050", dataOra: "2026-05-26T08:28:45", tipo: "operazione", operazione: "Visualizza_pagina_posto_auto", utente: "BeatriceVeronesi" },
   { id: "LOG-049", dataOra: "2026-05-26T08:25:10", tipo: "messaggio", messaggio: "Esportazione dei log di sistema completata (Dimensione file: 4.2 MB)." },
-  { id: "LOG-048", dataOra: "2026-05-26T08:14:30", tipo: "operazione", operazione: "Sblocca_utente", utente: "BeatriceVeronesi" },
-  { id: "LOG-047", dataOra: "2026-05-26T08:09:15", tipo: "operazione", operazione: "Visualizza_informazioni", utente: "DavideRossini" },
-  { id: "LOG-046", dataOra: "2026-05-26T08:01:22", tipo: "operazione", operazione: "Blocca_utente", utente: "BeatriceVeronesi" },
+  { id: "LOG-048", dataOra: "2026-05-26T08:14:30", tipo: "operazione", operazione: "Visualizza_elenco_posti_auto", utente: "BeatriceVeronesi" },
+  { id: "LOG-047", dataOra: "2026-05-26T08:09:15", tipo: "operazione", operazione: "Modifica_credenziali", utente: "DavideRossini" },
+  { id: "LOG-046", dataOra: "2026-05-26T08:01:22", tipo: "operazione", operazione: "Registrazione", utente: "BeatriceVeronesi" },
   { id: "LOG-045", dataOra: "2026-05-26T07:52:00", tipo: "messaggio", messaggio: "Allarme Sicurezza: Rilevati tentativi di login multipli dall'IP 185.10.22.1." },
   { id: "LOG-044", dataOra: "2026-05-26T07:40:15", tipo: "operazione", operazione: "Visualizza_prenotazioni_ricevute", utente: "SilviaAzzurri" },
   { id: "LOG-043", dataOra: "2026-05-26T07:22:10", tipo: "operazione", operazione: "Lascia_una_recensione", utente: "FabioMarroni" },

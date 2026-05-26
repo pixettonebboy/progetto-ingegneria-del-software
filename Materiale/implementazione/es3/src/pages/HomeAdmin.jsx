@@ -18,7 +18,7 @@ function HomeAdmin() {
           </div>
         </div>
 
-        <button className="back-btn" onClick={() => navigate("/home")}>
+        <button className="back-btn" onClick={() => navigate("/")}>
           ← Esci
         </button>
       </div>
